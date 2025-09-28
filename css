@@ -1,0 +1,106 @@
+body {
+margin: 0;
+font-family: "Microsoft JhengHei", sans-serif;
+}
+
+header {
+height: 100vh; /* 佔滿整個視窗高度 */
+background: url("class-photo.jpg") no-repeat center center/cover;
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+position: relative;
+}
+
+/* 背景暗一點，讓文字更清楚 */
+header::before {
+content: "";
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: rgba(0, 0, 0, 0.5); 
+}
+
+header nav a{
+    color: #ccc;
+    margin: 0 10px;
+    font-size:larger;
+    text-decoration: none;
+}
+
+header nav a:hover{
+    text-decoration: underline;
+    color: #cccccc92;
+}
+
+nav{
+    position:fixed ;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px 0;
+    z-index: 1000;
+}
+
+header h1, header p {
+position: relative; /* 讓文字浮在遮罩之上 */
+z-index: 1;
+}
+
+header h1 {
+font-size: 4rem;
+margin: 0;
+}
+
+header p {
+font-size: 1.5rem;
+margin-top: 20px;
+}
+
+
+
+.wrap{
+  overflow:hidden;
+}
+
+table{
+  font-family: 'Microsoft JhengHei', sans-serif;
+  border-collapse:collapse;
+
+}
+
+th{
+    background-color: rgba(79,192,210,0.7);
+    width:25vw;
+    height:50px;
+    text-align: center;
+}
+
+td{
+  background-color:#363636;
+  color:#ffffff;
+  width:25vw;
+  height:50px;
+  text-align:center;
+}
+
+tr{
+  border-bottom: 1px solid #2a2a2a;
+  border-right: 1px solid #2a2a2a;
+}
+
+
+
+/* 其他區塊 */
+section {
+padding: 50px;
+text-align: center;
+}
+footer {
+  background-color: #ccc;
+  color: black;
+  text-align: center;
+  padding: 15px;
+}
