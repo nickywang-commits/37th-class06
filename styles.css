@@ -37,7 +37,7 @@ header nav a:hover{
 
 nav{
     position:fixed ;
-    top: 0;
+    top: 0%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px 0;
@@ -68,21 +68,21 @@ margin-top: 20px;
 table{
   font-family: 'Microsoft JhengHei', sans-serif;
   border-collapse:collapse;
-
+  margin: 0 auto;
 }
 
 th{
     background-color: rgba(79,192,210,0.7);
-    width:25vw;
-    height:50px;
+    width: 100px;
+    height: 80px;
     text-align: center;
 }
 
 td{
   background-color:#363636;
   color:#ffffff;
-  width:25vw;
-  height:50px;
+  width: 100px;
+  height:80px;
   text-align:center;
 }
 
@@ -94,7 +94,7 @@ tr{
 
 
 /* 其他區塊 */
-section {
+section{
 padding: 50px;
 text-align: center;
 }
