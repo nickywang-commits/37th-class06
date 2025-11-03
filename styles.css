@@ -242,3 +242,42 @@ footer {
   text-align: center;
   padding: 15px;
 }
+
+/* Responsive rules for small screens (mobile) */
+@media (max-width: 600px) {
+  section {
+    padding: 40px 20px;
+  }
+
+  /* Make the schedule image scale to container without changing on-page layout */
+  #\u8ab2\u8868 img.zoomable,
+  img.zoomable {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Timeline: stack events vertically and ensure dots align */
+  .timeline {
+    padding: 20px 10px;
+  }
+
+  .timeline::after {
+    left: 8%;
+  }
+
+  .event{
+    width: 100%;
+    left: 0;
+    padding: 16px 10px;
+  }
+
+  /* Make thumbnail sizes a bit smaller on small screens */
+  .gallery img{
+    width: 80px;
+    height: 80px;
+  }
+}
+
