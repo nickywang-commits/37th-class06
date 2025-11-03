@@ -1,98 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>37th class 6</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="相簿/">
-   </head>
-    <body>
-      <div id="index">
-        <header>
-            <h1>37th class 6</h1>
-          <nav>
-              <a href="#index">首頁</a>
-              <a href="#members">班級成員</a>
-              <a href="#課表">課表</a>
-              <a href="#eventpictures">活動照片</a>
-          </nav>
-        </header>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>37th class 6</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+  <div id="index">
+    <header>
+      <h1>37th class 6</h1>
+      <nav>
+        <a href="#index">首頁</a>
+        <a href="#members">班級成員</a>
+        <a href="#課表">課表</a>
+        <a href="#eventpictures">活動照片</a>
+        <a href="#journal">班刊</a>
+      </nav>
+    </header>
+  </div>
+
+  <section id="members">
+    <h2>班級成員</h2>
+    <div class="wrap">
+      <table border ="1">
+        <tr><th colspan="6">座位表</th></tr>
+        <tr><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td></tr>
+        <tr><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td></tr>
+        <tr><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td></tr>
+        <tr><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td></tr>
+        <tr><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td></tr>
+        <tr><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td><td>td</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="課表">
+    <h2>課表</h2>
+      <img src="相簿/課表.jpg" alt="課表" width="400px"/>
+  </section>
+
+  <section id="eventpictures" class="timeline">
+    <h2>活動照片</h2>
+    <div class="event" data-event="啦啦隊比賽">
+      <h3>啦啦隊比賽</h3>
+      <div class="gallery">
+        <img src="相簿/啦啦隊1.jpeg" alt="啦啦隊照片">
+        <img src="相簿/啦啦隊2.jpeg" alt="啦啦隊照片">
       </div>
+    </div>
+  </section>
 
-      <section id="members" >
-        <h2>班級成員</h2>
-        <div class="wrap">
-          <table border ="1">
-            <tr>
-              <th colspan="6">座位表</th>
-            </tr>
-            <tr>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-            </tr>
-            <tr>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-            </tr>
-            <tr>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-            </tr>
-                <tr>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-            </tr>
-            <tr>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-              <td>td</td>
-            </tr>
-          </table>
-        </div>
-      </section>
-      <section id="課表">
-        <h2>課表</h2>
-        <img src="相簿/課表.jpg" alt="課表" width="500px"/>
-      </section>
-      <section id="eventpictures"  class="timeline">
-        <h2>活動照片</h2>
+  <section id="journal">
+    <h2>班刊</h2>
+  </section>
 
-        <div class="啦啦隊比賽">
-          <h3>啦啦隊比賽"</h3>
-          <div class="gallary">
-            <img src="相簿/啦啦隊1.jpeg" alt="啦啦隊照片">
-            <img src="相簿/啦啦隊2.jpeg" alt="啦啦隊照片">
-          </div>
-        </div>
-      </section>
-        <div id="lightbox">
-          <span class="close">&times;</span>
-          <div id="lightbox-content"></div>
-          <div class="arrow left">&#10094</div>
-          <div class="arrow right">&#10095</div>
-        </div>
-      <footer>
-        <p>2025 Nicky. All rights reserved.</p>
-      </footer>
-  </body>
-  </html>
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="放大圖">
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+  </div>
+
+  <footer>
+    <p>2025 Nicky. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

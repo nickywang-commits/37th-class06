@@ -1,5 +1,6 @@
 :root{
   --main-color: #fff9f5;
+  --lighter-color:#f8e7dc;
   --darker-color:#dcc1b0;
   --accent-color: #869dab;
   --dark-bg:#3d313f;
@@ -7,69 +8,72 @@
 }
 
 body {
-margin: 0;
-font-family: "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  font-family: "Microsoft JhengHei", sans-serif;
+  background-color: var(--main-color);
 }
 
 header {
-height: 100vh; /* 佔滿整個視窗高度 */
-background: url("class-photo.jpg") no-repeat center center/cover;
-color: white;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-position: relative;
+  height: 100vh;
+  background: url("class-photo.jpg") no-repeat center center/cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
-/* 背景暗一點，讓文字更清楚 */
 header::before {
-content: "";
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background-color: var(--darker-color); 
-}
-
-header nav a{
-    color: aliceblue;
-    margin: 0 10px;
-    font-size:larger;
-    text-decoration: none;
-}
-
-header nav a:hover{
-    text-decoration: underline;
-    color: var(--dark-bg);
-}
-
-nav{
-    position:fixed ;
-    top: 0%;
-    width: 100%;
-    background-color:var(--light-bg);
-    backdrop-filter: blur(6px);
-    padding: 20px 0;
-    z-index: 1000;
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--darker-color);
+  z-index: 0;
 }
 
 header h1, header p {
-position: relative; /* 讓文字浮在遮罩之上 */
-z-index: 1;
+  position: relative;
+  z-index: 1;
+}
+
+nav{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--light-bg);
+  padding: 20px 0;
+  z-index: 1000;
+  text-align: center;
+}
+
+header nav a{
+  color: aliceblue;
+  margin: 0 10px;
+  font-size: larger;
+  text-decoration: none;
+}
+
+header nav a:hover{
+  text-decoration: underline;
+  color: var(--dark-bg);
 }
 
 header h1 {
-font-size: 4rem;
-margin: 0;
+  font-size: 4rem;
+  margin: 0;
 }
 
-header p {
-font-size: 1.5rem;
-margin-top: 20px;
+section{
+padding: 80px 50px;
+text-align: center;
+background-color: (--main-color);
 }
 
-
-
+section:nth-of-type(even){
+  background-color: var(--lighter-color);
+}
 .wrap{
   overflow:hidden;
 }
@@ -81,11 +85,11 @@ table{
 }
 
 th{
-    background-color: var(--accent-color);
-    width: 100px;
-    height: 80px;
-    text-align: center;
-    color: aliceblue;
+  background-color: var(--accent-color);
+  width: 100px;
+  height: 80px;
+  text-align: center;
+  color: aliceblue;
 }
 
 td{
@@ -96,65 +100,142 @@ td{
   text-align:center;
 }
 
-tr{
-  border-bottom: 1px solid #2a2a2a;
-  border-right: 1px solid #2a2a2a;
+.timeline{
+  position: relative;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 0;
 }
 
-
-
-/* 其他區塊 */
-section{
-padding: 80px 50px;
-text-align: center;
-background-color: (--main-color);
-}
-
-section:nth-of-type(even){
+/* Make the eventpictures section match other sections' background */
+#eventpictures{
   background-color: var(--main-color);
 }
 
-.gallary{
+.timeline::after{
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--light-bg);
+  top: 25%;
+  bottom: 0;
+  left: 15%;
+  margin-left: -2px;
+}
+
+.event{
+  padding: 20px 40px;
+  position: relative;
+  width: 50%;
+  left: 17%;
+  box-sizing: border-box;
+}
+
+/* Center the specific event '啦啦隊比賽' and its gallery */
+.event[data-event="啦啦隊比賽"]{
+  width: 100%;
+  left: 0;
+  text-align: center;
+  padding-left: 0;
+}
+.event[data-event="啦啦隊比賽"] .gallery{
+  justify-content: center; /* ensure thumbnails centered */
+}
+
+/* small circular dot on the timeline for each event */
+.event::before{
+  content: "";
+  position: absolute;
+  /* align with the timeline line defined at left: 15% */
+  left: 15%;
+  transform: translateX(-50%) translateY(-50%);
+  /* top is set via --dot-top (calculated in JS) to align with thumbnail center */
+  top: var(--dot-top, 24px);
+  width: 14px;
+  height: 14px;
+  border-radius: 30%;
+  background-color: var(--accent-color);
+  border: 3px solid var(--main-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1500; /* above the timeline line but below lightbox */
+}
+
+.gallery{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
 
-.gallary img{
-  width: 200px;
-  border-radius:10px ;
+.gallery img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
-.gallary img :hover{
+.gallery img:hover{
   transform: scale(1.05);
 }
 
+/* Lightbox */
 #lightbox{
   display: none;
   justify-content: center;
   align-items: center;
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 2000;
-  width: 100%;  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0,0,0,0.8);
+  overflow: hidden;
 }
 
-#lightbox-content img,
-#lightbox-content video{
-  max-width:80%;  max-height: 80%;
-  border-radius:10px ;
+/* Force-open state useful for debugging when other CSS overrides display */
+#lightbox.open{
+  display: flex !important;
+  pointer-events: auto;
+  z-index: 99999 !important;
 }
 
-#lightbox.close{
+#lightbox img{
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+#lightbox .close{
   position: absolute;
-  top: 20px; right: 40px;
+  top: 20px;
+  right: 40px;
   font-size: 40px;
   color: aliceblue;
   cursor: pointer;
 }
+
+#lightbox .arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 60px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+#lightbox .arrow.left {
+  left: 10px;
+}
+
+#lightbox .arrow.right {
+  right: 10px;
+}
+
 footer {
   background-color: var(--darker-color);
   color: black;
