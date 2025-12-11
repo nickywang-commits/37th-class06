@@ -258,6 +258,7 @@ footer {
   padding: 15px;
 }
 
+<<<<<<< HEAD
 /* PDF button (text fallback when cover image missing) */
 .pdf-button{
   display:inline-block;
@@ -337,6 +338,8 @@ html.dark-theme header nav a,
 html.dark-theme .darkModeToggle {
   color: var(--header-text) !important;
 }
+=======
+>>>>>>> b4fc4491bd2c36b8e1cc5945669d7e9ead00b08b
 /* Responsive rules for small screens (mobile) */
 @media (max-width: 600px) {
   section {
@@ -375,6 +378,7 @@ html.dark-theme .darkModeToggle {
   }
 }
 
+<<<<<<< HEAD
 /* Desktop: make the schedule image a bit smaller than 400px */
 #\u8ab2\u8868 img.zoomable,
 img.zoomable {
@@ -384,3 +388,5 @@ img.zoomable {
   display: block;
   margin: 0 auto;
 }
+=======
+>>>>>>> b4fc4491bd2c36b8e1cc5945669d7e9ead00b08b
