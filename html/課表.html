@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>課表 - 37th class 6</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+  <header>
+    <h1>37th class 6</h1>
+    <nav>
+      <a href="../index.html">首頁</a>
+      <a href="member.html#members">班級成員</a>
+      <a href="課表.html#課表">課表</a>
+      <a href="eventpictures.html#eventpictures">活動照片</a>
+      <a href="journal.html#journal">班刊</a>
+      <button id="theme-toggle" class="darkModeToggle" aria-pressed="false" title="切換深色模式">深色/淺色</button>
+    </nav>
+  </header>
+
+  <section id="課表" style="padding:80px 20px;text-align:center;">
+    <h2 id="課表">課表</h2>
+    <img class="zoomable" src="../相簿/課表.jpg" alt="課表">
+  </section>
+
+  <footer>
+    <p>2025 Nicky. All rights reserved.</p>
+  </footer>
+
+  <button class="goTop hide" aria-label="回到頂部">↑</button>
+  <script src="../script.js"></script>
+  <!-- Lightbox (shared) -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="放大圖">
+    <iframe id="lightbox-iframe" src="" frameborder="0" style="display:none;"></iframe>
+    <div id="pdf-viewer" style="display:none; width:80%; height:80%;">
+      <div id="pdf-controls" style="text-align:center; margin-bottom:6px;">
+        <button id="pdf-prev">上一頁</button>
+        <span style="margin:0 8px;">Page: <span id="page_num">1</span> / <span id="page_count">0</span></span>
+        <button id="pdf-next">下一頁</button>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;height:calc(100% - 32px);">
+        <canvas id="pdf-canvas" style="max-width:100%; max-height:100%; box-shadow:0 4px 12px rgba(0,0,0,0.4); background:#fff;"></canvas>
+      </div>
+    </div>
+    <div class="arrow left">&#10094;</div>
+    <div class="arrow right">&#10095;</div>
+  </div>
+</body>
+</html>

@@ -5,37 +5,43 @@
   --accent-color: #869dab;
   --dark-bg:#3d313f;
   --light-bg:#847072;
+  --text-color: #222222;
+  --nav-link-color: aliceblue;
+  --header-text: #ffffff;
+}
+
+
+/* Manual dark-theme toggle: add class `dark-theme` on <html> to force dark mode */
+html.dark-theme {
+    --main-color: #666362;
+    --lighter-color: #3a3a3a;
+    --darker-color: #2c2623;
+    --accent-color: #5a7a8c;
+    --dark-bg: #e0dede;
+    --light-bg: #f2f0f0;
+    --text-color: aliceblue;
+    --nav-link-color: #e8f3ff;
+    --header-text: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: "Microsoft JhengHei", sans-serif;
   background-color: var(--main-color);
+  color: var(--text-color);
 }
 
+/* Simplified header: combine image + overlay using a single background declaration */
 header {
-  height: 100vh;
-  background: url("class-photo.jpg") no-repeat center center/cover;
-  color: white;
+  height: 100vh; /* restore full viewport hero */
+  box-sizing: border-box;
+  padding-top: 60px; /* leave space for fixed nav */
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("class-photo.jpg") center/cover no-repeat;
+  color: var(--header-text);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  position: relative;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: var(--darker-color);
-  z-index: 0;
-}
-
-header h1, header p {
-  position: relative;
-  z-index: 1;
 }
 
 nav{
@@ -49,7 +55,7 @@ nav{
 }
 
 header nav a{
-  color: aliceblue;
+  color: var(--nav-link-color);
   margin: 0 10px;
   font-size: larger;
   text-decoration: none;
@@ -63,6 +69,7 @@ header nav a:hover{
 header h1 {
   font-size: 4rem;
   margin: 0;
+  color: var(--header-text);
 }
 
 section{
@@ -132,13 +139,13 @@ td{
 }
 
 /* Center the specific event '啦啦隊比賽' and its gallery */
-.event[data-event="啦啦隊比賽"]{
+.event{
   width: 100%;
   left: 0;
   text-align: center;
   padding-left: 0;
 }
-.event[data-event="啦啦隊比賽"] .gallery{
+.event.gallery{
   justify-content: center; /* ensure thumbnails centered */
 }
 
@@ -208,6 +215,14 @@ td{
   border-radius: 10px;
 }
 
+#lightbox iframe{
+  width: 80%;
+  height: 80%;
+  border: none;
+  border-radius: 10px;
+  background: white;
+}
+
 #lightbox .close{
   position: absolute;
   top: 20px;
@@ -238,7 +253,134 @@ td{
 
 footer {
   background-color: var(--darker-color);
-  color: black;
+  color: var(--text-color);
   text-align: center;
   padding: 15px;
+}
+
+/* PDF button (text fallback when cover image missing) */
+.pdf-button{
+  display:inline-block;
+  padding:8px 14px;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.pdf-button:focus{ outline: 3px solid rgba(0,0,0,0.2); }
+
+/* PDF controls inside lightbox */
+#pdf-controls button{
+  padding:6px 10px;
+  margin:0 6px;
+  border-radius:4px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  cursor: pointer;
+}
+#pdf-controls span{ color: #fff; }
+
+/* 回到頂部按鈕 */
+.goTop{
+  position: fixed;
+  right: 16px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.goTop.hide{ opacity: 0; transform: translateY(10px) scale(0.95); pointer-events: none; }
+.goTop:hover{ outline: 3px solid rgba(0,0,0,0.15); }
+
+.darkModeToggle{
+  /* small inline button for header navigation */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: var(--nav-link-color);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* Ensure header elements become darker in dark-theme for readability */
+html.dark-theme header {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("class-photo.jpg") center/cover no-repeat !important;
+}
+
+html.dark-theme nav {
+  background-color: rgba(0,0,0,0.55) !important;
+}
+
+html.dark-theme header h1,
+html.dark-theme header p,
+html.dark-theme header nav a,
+html.dark-theme .darkModeToggle {
+  color: var(--header-text) !important;
+}
+/* Responsive rules for small screens (mobile) */
+@media (max-width: 600px) {
+  section {
+    padding: 40px 20px;
+  }
+
+  /* Make the schedule image scale to container without changing on-page layout */
+  #\u8ab2\u8868 img.zoomable,
+  img.zoomable {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Timeline: stack events vertically and ensure dots align */
+  .timeline {
+    padding: 20px 10px;
+  }
+
+  .timeline::after {
+    left: 8%;
+  }
+
+  .event{
+    width: 100%;
+    left: 0;
+    padding: 16px 10px;
+  }
+
+  /* Make thumbnail sizes a bit smaller on small screens */
+  .gallery img{
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* Desktop: make the schedule image a bit smaller than 400px */
+#\u8ab2\u8868 img.zoomable,
+img.zoomable {
+  width: 320px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
